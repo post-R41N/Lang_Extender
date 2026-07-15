@@ -1,0 +1,13 @@
+﻿  dllmain.cpp
+E:\Visual Studio Projects\Lang_Extender\defs.h(26,1): warning C4005: 'LOBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(206): message : see previous definition of 'LOBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(30,1): warning C4005: 'HIBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(207): message : see previous definition of 'HIBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(33,1): warning C4005: 'LOWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(204): message : see previous definition of 'LOWORD'
+E:\Visual Studio Projects\Lang_Extender\defs.h(34,1): warning C4005: 'HIWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(205): message : see previous definition of 'HIWORD'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(27,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(28,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(29,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+  Lang_Extender.vcxproj -> E:\Visual Studio Projects\Lang_Extender\Debug\Lang_Extender.asi
