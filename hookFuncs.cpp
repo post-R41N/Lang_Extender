@@ -3,11 +3,11 @@
 size_t findPattern(const char* pszPattern, ptrdiff_t offset = 0) 
 {
     size_t found_address = 0;
-    //#ifdef _DEBUG
-    //	hook::pattern g = hook::pattern(pszPattern); // .count(1);
-    //#else
+    #ifdef _DEBUG
+    	hook::pattern g = hook::pattern(pszPattern); // .count(1);
+    #else
     hook::pattern g = hook::pattern(pszPattern).count(1);
-    //#endif
+    #endif
     if (!g.empty()) found_address = reinterpret_cast<size_t>(g.get(0).get<void>(offset));
     return found_address;
 }

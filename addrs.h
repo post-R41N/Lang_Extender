@@ -11,6 +11,44 @@
 
 extern size_t g_baseAddress;
 
+//Functions==============================================
+extern size_t cText_isJapaneseLang;
+
+extern size_t cGameConfigReader__FileType_getPrevFile;
+extern size_t cGameConfigReader__FileType_getFileByType;
+
+extern size_t t_gpDict_Lookup;
+
+extern size_t cSprite2d_setTexture;
+extern size_t cSprite2d_Delete;
+
+extern size_t cFontDesc_LoadFontTex;
+
+extern size_t cTxdStore_loadFile;
+extern size_t cTxdStore_getIndexByName;
+extern size_t cTxdStore_findSlotFromHashKey;
+extern size_t cTxdStore_release;
+extern size_t cTxdStore_releaseEntry;
+extern size_t cTxdStore_pushCurrentTxd;
+extern size_t cTxdStore_addEntry;
+extern size_t cTxdStore_addRef;
+extern size_t cTxdStore_popCurrentTxd;
+extern size_t cTxdStore_atStringHash;
+extern size_t cTxdStore_at;
+
+extern size_t cAutoLock_constructor;
+extern size_t cAutoLock_destructor;
+
+extern size_t cRenderer_removeAllTexturesFromDictionary;
+
+extern size_t f_hashStringLowercaseFromSeed;
+extern size_t f__readFontsDat;
+extern size_t f_sub_814AA0;
+
+extern size_t cFrontEnd_GetLanguageFromSystemLanguage;
+extern size_t cText_GetLanguageFile;
+extern size_t f_loadFontTextures;
+
 namespace rage 
 {
     // rage
@@ -118,7 +156,7 @@ struct CText
     const char* GetLanguageFile(char a2);
     bool isJapaneseLang()
     {
-        return ((bool(__thiscall*)(CText*))(FIX_ADDR(0x00475220)))(this);
+        return ((bool(__thiscall*)(CText*))(cText_isJapaneseLang))(this);
     }
 };
 
@@ -144,11 +182,11 @@ struct CGameConfigReader
     CGameConfigReader__FileType m_lastType;
     CGameConfigReader__FileType* getPrevFile(CGameConfigReader* a2)
     {
-        return ((CGameConfigReader__FileType*(__thiscall*)(CGameConfigReader*, CGameConfigReader * a2))(FIX_ADDR(0x004756D0)))(this, a2);
+        return ((CGameConfigReader__FileType*(__thiscall*)(CGameConfigReader*, CGameConfigReader * a2))(cGameConfigReader__FileType_getPrevFile))(this, a2);
     }
     CGameConfigReader__FileType* getFileByType(int a2)
     {
-        return ((CGameConfigReader__FileType*(__thiscall*)(CGameConfigReader*, int a2))(FIX_ADDR(0x00475680)))(this, a2);
+        return ((CGameConfigReader__FileType*(__thiscall*)(CGameConfigReader*, int a2))(cGameConfigReader__FileType_getFileByType))(this, a2);
     }
     //CGameConfigReader__FileType* sub_4774A0();
 };
@@ -188,7 +226,7 @@ template <typename T> struct pgDictionary : pgBase
     sysArray<T*> m_data;
     DWORD Lookup(pgDictionary*, DWORD a2)
     {
-        return ((DWORD(__thiscall*)(pgDictionary*, DWORD a2))(FIX_ADDR(0x00426530)))(this, a2);
+        return ((DWORD(__thiscall*)(pgDictionary*, DWORD a2))(t_gpDict_Lookup))(this, a2);
     }
 };
 
@@ -197,11 +235,11 @@ struct CSprite2d
     grcTexture* m_pTxd;
     void setTexture(const char* a2)
     {
-        return ((void(__thiscall*)(CSprite2d*, const char* a2))(FIX_ADDR(0x0081CC10)))(this, a2);
+        return ((void(__thiscall*)(CSprite2d*, const char* a2))(cSprite2d_setTexture))(this, a2);
     }
     void Delete()
     {
-        return ((void(__thiscall*)(CSprite2d*))(FIX_ADDR(0x0081BB50)))(this);
+        return ((void(__thiscall*)(CSprite2d*))(cSprite2d_Delete))(this);
     }
 };
 
@@ -209,7 +247,7 @@ struct CFontDesc
 {
     int LoadFontTex(const char* a2)
     {
-        return ((int(__thiscall*)(CFontDesc*, const char* a2))(FIX_ADDR(0x00815280)))(this, a2);
+        return ((int(__thiscall*)(CFontDesc*, const char* a2))(cFontDesc_LoadFontTex))(this, a2);
     }
 };
 
@@ -217,48 +255,48 @@ struct CTxdStore
 {
     static bool __cdecl loadFile(int dwIndex, const char* pszFileName)
     {
-        return ((bool(__cdecl*)(int dwIndex, const char* pszFileName))(FIX_ADDR(0x0086BE70)))(dwIndex, pszFileName);
+        return ((bool(__cdecl*)(int dwIndex, const char* pszFileName))(cTxdStore_loadFile))(dwIndex, pszFileName);
     }
     static int getIndexByName(const char* a1)
     {
-        return ((int(__cdecl*)(const char* a1))(FIX_ADDR(0x0048EC50)))(a1);
+        return ((int(__cdecl*)(const char* a1))(cTxdStore_getIndexByName))(a1);
     }
     static void __cdecl findSlotFromHashKey(int a1)
     {
-        return ((void(__cdecl*)(int a1))(FIX_ADDR(0x0086BA30)))(a1);
+        return ((void(__cdecl*)(int a1))(cTxdStore_findSlotFromHashKey))(a1);
     }
     static char __cdecl release(int a1)
     {
-        return ((char(__cdecl*)(int a1))(FIX_ADDR(0x0048ECA0)))(a1);
+        return ((char(__cdecl*)(int a1))(cTxdStore_release))(a1);
     }
     static int __cdecl releaseEntry(int a1)
     {
-        return ((int(__cdecl*)(int a1))(FIX_ADDR(0x0048EBE0)))(a1);
+        return ((int(__cdecl*)(int a1))(cTxdStore_releaseEntry))(a1);
     }
     static pgDictionary<grcTexture>* pushCurrentTxd()
     {
-        return ((pgDictionary<grcTexture>*(*)())(FIX_ADDR(0x0086B5B0)))();
+        return ((pgDictionary<grcTexture>*(*)())(cTxdStore_pushCurrentTxd))();
     }
     static int __cdecl addEntry(const char* a1)
     {
-        return ((int(__cdecl*)(const char* a1))(FIX_ADDR(0x0048EB90)))(a1);
+        return ((int(__cdecl*)(const char* a1))(cTxdStore_addEntry))(a1);
     }
     static int __cdecl addRef(int a1)
     {
-        return ((int(__cdecl*)(int a1))(FIX_ADDR(0x0048EC70)))(a1);
+        return ((int(__cdecl*)(int a1))(cTxdStore_addRef))(a1);
     }
     static DWORD* popCurrentTxd()
     {
-        return ((DWORD*(*)())(FIX_ADDR(0x0086BA90)))();
+        return ((DWORD*(*)())(cTxdStore_popCurrentTxd))();
     }
     static pgDictionary<grcTexture>** ms_Current;
     static unsigned int __cdecl atStringHash(const char* a1, unsigned int a2)
     {
-        return ((unsigned int(__cdecl*)(const char* a1, unsigned int a2))(FIX_ADDR(0x0045A8B0)))(a1, a2);
+        return ((unsigned int(__cdecl*)(const char* a1, unsigned int a2))(cTxdStore_atStringHash))(a1, a2);
     }
     static size_t __cdecl at(int a1)
     {
-        return ((size_t(__cdecl*)(int a1))(FIX_ADDR(0x004921F0)))(a1);
+        return ((size_t(__cdecl*)(int a1))(cTxdStore_at))(a1);
     }
 };
 
@@ -268,11 +306,11 @@ struct CAutoLock
     int m_pCriticalSection;
     CAutoLock(LPCRITICAL_SECTION lpCriticalSection)
     {
-        ((CAutoLock*(__thiscall*)(CAutoLock*, LPCRITICAL_SECTION lpCriticalSection))(FIX_ADDR(0x004547E0)))(this, lpCriticalSection);
+        ((CAutoLock*(__thiscall*)(CAutoLock*, LPCRITICAL_SECTION lpCriticalSection))(cAutoLock_constructor))(this, lpCriticalSection);
     }
     ~CAutoLock()
     {
-        ((void(__thiscall*)(CAutoLock*))(FIX_ADDR(0x00454810)))(this);
+        ((void(__thiscall*)(CAutoLock*))(cAutoLock_destructor))(this);
     }
 };
 
@@ -280,7 +318,7 @@ struct CRenderer
 {
     int removeAllTexturesFromDictionary(int a2) 
     {
-        return ((int(__thiscall*)(CRenderer*, int a2))(FIX_ADDR(0x007E2870)))(this, a2);
+        return ((int(__thiscall*)(CRenderer*, int a2))(cRenderer_removeAllTexturesFromDictionary))(this, a2);
     }
 };
 
@@ -289,6 +327,7 @@ struct CFrontEnd
     static int GetLanguageFromSystemLanguage();
 };
 
+//Global Variables==============================================
 extern int* __dwCurrentEpisode;
 extern int* pDword_F0EBC4;
 extern char* pByte_109B225;
@@ -320,6 +359,16 @@ extern char* pByte_10984A8;
 extern int* pDword_1098940;
 extern char* pByte_1098700;
 extern int* __dwCurrentLanguage;
+
+extern size_t sub_7C5D70_lea;
+extern size_t sub_7C5D70_mov;
+extern size_t _loadSettings_dwCurrentLanguage_1;
+extern size_t _loadSettings_dwCurrentLanguage_2;
+extern size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1;
+extern size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2;
+extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1;
+extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
+extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;
 
 void initAddrsDynamic();
 void initAddrs();

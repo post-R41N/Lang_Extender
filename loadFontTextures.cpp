@@ -4,17 +4,17 @@
 
 unsigned int __cdecl hashStringLowercaseFromSeed(const char* a1, unsigned int a2)
 {
-    return ((unsigned int(__cdecl*)(const char* a1, unsigned int a2))(FIX_ADDR(0x0045A8B0)))(a1, a2);
+    return ((unsigned int(__cdecl*)(const char* a1, unsigned int a2))(f_hashStringLowercaseFromSeed))(a1, a2);
 }
 
 int __cdecl _readFontsDat(int a1)
 {
-    return ((int(__cdecl*)(int a1))(FIX_ADDR(0x00814090)))(a1);
+    return ((int(__cdecl*)(int a1))(f__readFontsDat))(a1);
 }
 
 int sub_814AA0()
 {
-    return ((int(*)())(FIX_ADDR(0x00814AA0)))();
+    return ((int(*)())(f_sub_814AA0))();
 }
 
 void _loadFontTextures()

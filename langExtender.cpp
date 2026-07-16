@@ -86,23 +86,19 @@ const char* CText::GetLanguageFile(char a2)
 void breakLimits()
 {
     //Extending Language options from 6 to 7 in sub_7C5D70 function
-    writeBYTE(FIX_ADDR(0x007C6154), 2); // lea ebp,[edi+1] -> [edi+2]: v16 = 7 вместо 6
-    writeBYTE(FIX_ADDR(0x007C6158), 7); // mov ebp,1 -> mov ebp,7 (branch m_bJapanese)
+    if (sub_7C5D70_lea != 0) writeBYTE(sub_7C5D70_lea, 2); // lea ebp,[edi+1] -> [edi+2]: v16 = 7 вместо 6
+    if (sub_7C5D70_mov != 0) writeBYTE(sub_7C5D70_mov, 7); // mov ebp,1 -> mov ebp,7 (branch m_bJapanese)
 
     //Breaking resets of dwCurrentLanguage in _loadSettings function
-    makeNop(FIX_ADDR(0x007C36D2), 6);//NOPing the __dwCurrentLanugage = 0
-    makeNop(FIX_ADDR(0x007C36F5), 10);//NOPing the __dwCurrentLanugage = 6
+    if (_loadSettings_dwCurrentLanguage_1 != 0) makeNop(_loadSettings_dwCurrentLanguage_1, 6);//NOPing the __dwCurrentLanugage = 0
+    if (_loadSettings_dwCurrentLanguage_2 != 0) makeNop(_loadSettings_dwCurrentLanguage_2, 10);//NOPing the __dwCurrentLanugage = 6
 
     //Breaking resets of dwCurrentLanguage/dwGameLanguage in CFrontEnd::UpdateMenuOptionsFromProfile function
-    makeNop(FIX_ADDR(0x007C5A73), 10);//NOPing the __dwCurrentLanugage = 0
-    makeNop(FIX_ADDR(0x007C5A86), 15);//NOPing operation for giving language value = 6
-
-    //makeNop(FIX_ADDR(0x007C5A73), 10);//NOPing the __dwCurrentLanugage = 0
-    //makeNop(FIX_ADDR(0x007C5A8B), 6);//NOPing the mov __dwGameLanguage, eax(6)
-    //makeNop(FIX_ADDR(0x007C5A90), 6);//NOPing the mov __dwCurrentLanguage, eax(6)
+    if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1, 10);//NOPing the __dwCurrentLanugage = 0
+    if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2 != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2, 15);//NOPing operation for giving language value = 6
 
     //Breaking resets of dwCurrentLanguage in CFrontEnd::SetValuesBasedOnPreference function
-    makeNop(FIX_ADDR(0x007C3E2C), 6);//NOPing the mov __dwCurrentLanguage, ebp(0)
-    makeNop(FIX_ADDR(0x007C3E44), 6);//NOPing the mov __dwCurrentLanguage, ebx(4)
-    makeNop(FIX_ADDR(0x007C3E5D), 6);//NOPing the mov __dwCurrentLanguage, edi(6)
+    if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1, 6);//NOPing the mov __dwCurrentLanguage, ebp(0)
+    if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2, 6);//NOPing the mov __dwCurrentLanguage, ebx(4)
+    if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3, 6);//NOPing the mov __dwCurrentLanguage, edi(6)
 }
