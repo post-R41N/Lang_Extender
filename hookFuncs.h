@@ -10,9 +10,12 @@ template<typename T> size_t getThisCallAddr(T func)
 }
 
 size_t findPattern(const char* pszPattern, ptrdiff_t offset);
+
 uint8_t writeBYTE(size_t addr, uint8_t val);
 void makeNop(size_t addr, size_t size);
-size_t setFnAddrInCallOpcode(size_t callPos, size_t pfn);
 DWORD writeDWORD(size_t addr, DWORD value);
+
+size_t getFnAddrInCallOpcode(size_t callPos);
+size_t setFnAddrInCallOpcode(size_t callPos, size_t pfn);
 
 void injectFunc(size_t addr, size_t pfn);

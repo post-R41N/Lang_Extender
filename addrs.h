@@ -41,9 +41,9 @@ extern size_t cAutoLock_destructor;
 
 extern size_t cRenderer_removeAllTexturesFromDictionary;
 
-extern size_t f_hashStringLowercaseFromSeed;
+//extern size_t f_hashStringLowercaseFromSeed;
 extern size_t f__readFontsDat;
-extern size_t f_sub_814AA0;
+extern size_t cFont_InitPerFrame;
 
 extern size_t cFrontEnd_GetLanguageFromSystemLanguage;
 extern size_t cText_GetLanguageFile;
@@ -355,7 +355,6 @@ extern int* pDword_109B21C;
 extern int* pDword_109B220;
 extern void* off_109B2CC;
 extern int* pDword_10986E8;
-extern char* pByte_10984A8;
 extern int* pDword_1098940;
 extern char* pByte_1098700;
 extern int* __dwCurrentLanguage;
@@ -371,7 +370,6 @@ extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;
 
 void initAddrsDynamic();
-void initAddrs();
 int GetLanguageFromSystemLanguage();
 void breakLimits();
 void _loadFontTextures();

@@ -89,6 +89,7 @@ void breakLimits()
     if (sub_7C5D70_lea != 0) writeBYTE(sub_7C5D70_lea, 2); // lea ebp,[edi+1] -> [edi+2]: v16 = 7 вместо 6
     if (sub_7C5D70_mov != 0) writeBYTE(sub_7C5D70_mov, 7); // mov ebp,1 -> mov ebp,7 (branch m_bJapanese)
 
+    
     //Breaking resets of dwCurrentLanguage in _loadSettings function
     if (_loadSettings_dwCurrentLanguage_1 != 0) makeNop(_loadSettings_dwCurrentLanguage_1, 6);//NOPing the __dwCurrentLanugage = 0
     if (_loadSettings_dwCurrentLanguage_2 != 0) makeNop(_loadSettings_dwCurrentLanguage_2, 10);//NOPing the __dwCurrentLanugage = 6
@@ -96,6 +97,7 @@ void breakLimits()
     //Breaking resets of dwCurrentLanguage/dwGameLanguage in CFrontEnd::UpdateMenuOptionsFromProfile function
     if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1, 10);//NOPing the __dwCurrentLanugage = 0
     if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2 != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2, 15);//NOPing operation for giving language value = 6
+    
 
     //Breaking resets of dwCurrentLanguage in CFrontEnd::SetValuesBasedOnPreference function
     if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1, 6);//NOPing the mov __dwCurrentLanguage, ebp(0)

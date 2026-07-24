@@ -2,19 +2,14 @@
 #include "addrs.h"
 #include <stdio.h>
 
-unsigned int __cdecl hashStringLowercaseFromSeed(const char* a1, unsigned int a2)
-{
-    return ((unsigned int(__cdecl*)(const char* a1, unsigned int a2))(f_hashStringLowercaseFromSeed))(a1, a2);
-}
-
 int __cdecl _readFontsDat(int a1)
 {
     return ((int(__cdecl*)(int a1))(f__readFontsDat))(a1);
 }
 
-int sub_814AA0()
+int CFont_InitPerFrame()
 {
-    return ((int(*)())(f_sub_814AA0))();
+    return ((int(*)())(cFont_InitPerFrame))();
 }
 
 void _loadFontTextures()
@@ -39,16 +34,6 @@ void _loadFontTextures()
     int v17; // esi
     CGameConfigReader__FileType v19; // [esp+18h] [ebp-8Ch] BYREF
 
-
-    //TEST#####################################
-    bool isRU = false;
-    bool isJP = false;
-    bool isInt = false;
-    int TextType = 0;
-    TextType = (int)g_text->m_cTextType;
-    //#########################################
-
-
     CAutoLock v18((LPCRITICAL_SECTION)pStru_10A1320);
     *pByte_109B225 = 1;
     g_pRenderer->removeAllTexturesFromDictionary(0);
@@ -65,7 +50,6 @@ void _loadFontTextures()
     v1 = CTxdStore::addEntry("fonts");
     if (g_text->m_cTextType == 114)
     {
-        isRU = true;
         v19.nNext = *(unsigned __int16*)(g_pGameConfigReader + 4);
         v19.nType = ConfigFontTxdR;
         PrevFile = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)&v19);
@@ -84,7 +68,6 @@ void _loadFontTextures()
     }
     else if (g_text->m_cTextType == 106 || g_text->m_bJapanese)
     {
-        isJP = true;
         FileByType = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getFileByType(ConfigFontTxdJ);
         if (FileByType->nNext == -1) goto LABEL_17;
         do
@@ -101,7 +84,6 @@ void _loadFontTextures()
     }
     else
     {
-        isInt = true;
         v2 = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getFileByType(ConfigFontTxd);
         if (v2->nNext == -1) goto LABEL_9;
         do
@@ -116,17 +98,6 @@ void _loadFontTextures()
             CTxdStore::loadFile(v1, "platform:/textures/fonts");
         }
     }
-
-    //TEST#####################################
-    printf_s("\n");
-    printf_s("Is Russian %d\n", isRU);
-    printf_s("Is Japanese %d\n", isJP);
-    printf_s("Is International %d\n", isInt);
-    printf_s("Text Type is %d\n", TextType);
-
-    //UITexture* test = (UITexture*)FIX_ADDR(0x007C4889);
-    //printf_s("%p\n", test);
-    //#########################################
 
     CTxdStore::addRef(v1);
     CTxdStore::findSlotFromHashKey(v1);
@@ -157,7 +128,7 @@ void _loadFontTextures()
     {
         v14 = *pDword_F0EC4C;
         pDword_1098940[0] = 0;
-        if (CTxdStore::at(*pDword_F0EC4C))
+        if (CTxdStore::at(*pDword_F0EC4C))//Проблемное место
         {
             CTxdStore::release(v14);
             v14 = *pDword_F0EC4C;

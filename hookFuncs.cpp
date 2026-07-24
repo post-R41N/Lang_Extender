@@ -38,6 +38,13 @@ void makeNop(size_t addr, size_t size)
     setProtect(addr, size, g_dwOldProtect);
 }
 
+size_t getFnAddrInCallOpcode(size_t callPos) 
+{
+    uint8_t* patch = (uint8_t*)callPos + 1;
+    auto retVal = (*(uint32_t*)patch + (callPos + 5));
+    return retVal;
+}
+
 size_t setFnAddrInCallOpcode(size_t callPos, size_t pfn)
 {
     BYTE* patch = (BYTE*)callPos + 1;

@@ -17,7 +17,6 @@ void init()
 {
     g_baseAddress = (size_t)GetModuleHandleA(nullptr);
 
-    //initAddrs();
     initAddrsDynamic();
     breakLimits();
 
@@ -56,10 +55,13 @@ void init()
 
     printf_s("sub_7C5D70_lea: 0x%zX\n", IDA_ADDR(sub_7C5D70_lea));
     printf_s("sub_7C5D70_mov: 0x%zX\n", IDA_ADDR(sub_7C5D70_mov));
+
     printf_s("_loadSettings_dwCurrentLanguage_1: 0x%zX\n", IDA_ADDR(_loadSettings_dwCurrentLanguage_1));
     printf_s("_loadSettings_dwCurrentLanguage_2: 0x%zX\n", IDA_ADDR(_loadSettings_dwCurrentLanguage_2));
+
     printf_s("cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1: 0x%zX\n", IDA_ADDR(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1));
     printf_s("cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2: 0x%zX\n", IDA_ADDR(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2));
+
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1));
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2));
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3));
@@ -94,9 +96,8 @@ void init()
 
     printf_s("cRenderer_removeAllTexturesFromDictionary: 0x%zX\n", IDA_ADDR(cRenderer_removeAllTexturesFromDictionary));
 
-    printf_s("f_hashStringLowercaseFromSeed: 0x%zX\n", IDA_ADDR(f_hashStringLowercaseFromSeed));
     printf_s("f__readFontsDat: 0x%zX\n", IDA_ADDR(f__readFontsDat));
-    printf_s("f_sub_814AA0: 0x%zX\n", IDA_ADDR(f_sub_814AA0));
+    printf_s("CFont::InitPerFrame: 0x%zX\n", IDA_ADDR(cFont_InitPerFrame));
 
     printf_s("cFrontEnd_GetLanguageFromSystemLanguage: 0x%zX\n", IDA_ADDR(cFrontEnd_GetLanguageFromSystemLanguage));
     printf_s("cText_GetLanguageFile: 0x%zX\n", IDA_ADDR(cText_GetLanguageFile));
@@ -106,13 +107,7 @@ void init()
 
     injectFunc(cFrontEnd_GetLanguageFromSystemLanguage, (size_t)(CFrontEnd::GetLanguageFromSystemLanguage));
     setFnAddrInCallOpcode(cText_GetLanguageFile, getThisCallAddr(&CText::GetLanguageFile));
-    injectFunc(f_loadFontTextures, (size_t)(_loadFontTextures));
-
-    /*OLD
-    injectFunc(FIX_ADDR(0x007BB3B0), (size_t)(CFrontEnd::GetLanguageFromSystemLanguage));
-    setFnAddrInCallOpcode(FIX_ADDR(0x007D00D3), getThisCallAddr(&CText::GetLanguageFile));
-    injectFunc(FIX_ADDR(0x00815AD0), (size_t)(_loadFontTextures));
-    */
+    //injectFunc(f_loadFontTextures, (size_t)(_loadFontTextures));
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,
