@@ -1,4 +1,4 @@
-﻿  dllmain.cpp
+﻿  addrs.cpp
 E:\Visual Studio Projects\Lang_Extender\defs.h(26,1): warning C4005: 'LOBYTE': macro redefinition
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(206): message : see previous definition of 'LOBYTE'
 E:\Visual Studio Projects\Lang_Extender\defs.h(30,1): warning C4005: 'HIBYTE': macro redefinition
@@ -7,24 +7,16 @@ E:\Visual Studio Projects\Lang_Extender\defs.h(33,1): warning C4005: 'LOWORD': m
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(204): message : see previous definition of 'LOWORD'
 E:\Visual Studio Projects\Lang_Extender\defs.h(34,1): warning C4005: 'HIWORD': macro redefinition
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(205): message : see previous definition of 'HIWORD'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(26,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(27,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(28,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(29,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(30,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(31,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(32,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(33,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(34,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(35,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(36,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(37,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(38,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(39,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(40,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(41,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(42,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
-E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(43,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+  dllmain.cpp
+E:\Visual Studio Projects\Lang_Extender\defs.h(26,1): warning C4005: 'LOBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(206): message : see previous definition of 'LOBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(30,1): warning C4005: 'HIBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(207): message : see previous definition of 'HIBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(33,1): warning C4005: 'LOWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(204): message : see previous definition of 'LOWORD'
+E:\Visual Studio Projects\Lang_Extender\defs.h(34,1): warning C4005: 'HIWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(205): message : see previous definition of 'HIWORD'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(19,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(44,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(45,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(46,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
@@ -36,5 +28,63 @@ E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(51,14): warning C4477: 'prin
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(52,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(53,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(54,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(55,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(56,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(57,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(58,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(59,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(60,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(61,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(62,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(63,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(64,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(65,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(66,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(67,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(68,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(69,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
 E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(70,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(71,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(72,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(73,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(75,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(76,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(77,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(78,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(79,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(80,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(81,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(82,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(83,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(84,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(85,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(86,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(87,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(88,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(89,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(90,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(91,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(92,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(93,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+E:\Visual Studio Projects\Lang_Extender\dllmain.cpp(111,14): warning C4477: 'printf_s' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'size_t'
+  langExtender.cpp
+E:\Visual Studio Projects\Lang_Extender\defs.h(26,1): warning C4005: 'LOBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(206): message : see previous definition of 'LOBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(30,1): warning C4005: 'HIBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(207): message : see previous definition of 'HIBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(33,1): warning C4005: 'LOWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(204): message : see previous definition of 'LOWORD'
+E:\Visual Studio Projects\Lang_Extender\defs.h(34,1): warning C4005: 'HIWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(205): message : see previous definition of 'HIWORD'
+E:\Visual Studio Projects\Lang_Extender\langExtender.cpp(166,28): warning C4477: 'sprintf_s' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const char **'
+  loadFontTextures.cpp
+E:\Visual Studio Projects\Lang_Extender\defs.h(26,1): warning C4005: 'LOBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(206): message : see previous definition of 'LOBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(30,1): warning C4005: 'HIBYTE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(207): message : see previous definition of 'HIBYTE'
+E:\Visual Studio Projects\Lang_Extender\defs.h(33,1): warning C4005: 'LOWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(204): message : see previous definition of 'LOWORD'
+E:\Visual Studio Projects\Lang_Extender\defs.h(34,1): warning C4005: 'HIWORD': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(205): message : see previous definition of 'HIWORD'
+  Generating Code...
   Lang_Extender.vcxproj -> E:\Visual Studio Projects\Lang_Extender\Debug\Lang_Extender.asi

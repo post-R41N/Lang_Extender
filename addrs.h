@@ -5,11 +5,24 @@
 #include "hookFuncs.h"
 
 #define FIX_ADDR(addr) (addr - 0x400000 + g_baseAddress)
+#define FIX_ADDR_OFFSET(addr, off)  (addr - 0x400000 + g_baseAddress + off)
 #define IDA_ADDR(addr) ((size_t)addr - (size_t)g_baseAddress + 0x400000)
 #define VALIDATE_SIZE(struc, size)				static_assert(sizeof(struc) == size, "Invalid structure size of " #struc)
 #define VALIDATE_OFFSET(struc, member, offset)	static_assert(offsetof(struc, member) == offset, "The offset of " #member " in " #struc " is not " #offset "...")
 
 extern size_t g_baseAddress;
+extern size_t dwGameSignature;
+
+enum class GameVersion
+{
+    Unknown = 0,
+    GTAIV_1070,
+    GTAIV_1080,
+    EFLC_1120,
+    EFLC_1130,
+};
+
+extern GameVersion dwGameVersion;
 
 //Functions==============================================
 extern size_t cText_isJapaneseLang;
@@ -41,18 +54,28 @@ extern size_t cAutoLock_destructor;
 
 extern size_t cRenderer_removeAllTexturesFromDictionary;
 
-//extern size_t f_hashStringLowercaseFromSeed;
 extern size_t f__readFontsDat;
 extern size_t cFont_InitPerFrame;
+
+extern size_t fiDevice_getDevice;
+extern size_t cPlayer_isSignedLocally;
+extern size_t f_sub_7CAC70;
+extern size_t f_gta_fopen;
+extern size_t f_gta_fread;
+extern size_t f_gta_fclose;
+extern size_t f_sub_4E3150;
+extern size_t f_sub_49C4D0;
+extern size_t f_sub_7C20C0;
+extern size_t f_loadSettings;
 
 extern size_t cFrontEnd_GetLanguageFromSystemLanguage;
 extern size_t cText_GetLanguageFile;
 extern size_t f_loadFontTextures;
 
-namespace rage 
+namespace rage
 {
     // rage
-} 
+}
 
 enum ConfigFiles
 {
@@ -160,7 +183,7 @@ struct CText
     }
 };
 
-template <typename T> struct sysArray 
+template <typename T> struct sysArray
 {
     T* pElements;
     WORD wCount;
@@ -182,11 +205,11 @@ struct CGameConfigReader
     CGameConfigReader__FileType m_lastType;
     CGameConfigReader__FileType* getPrevFile(CGameConfigReader* a2)
     {
-        return ((CGameConfigReader__FileType*(__thiscall*)(CGameConfigReader*, CGameConfigReader * a2))(cGameConfigReader__FileType_getPrevFile))(this, a2);
+        return ((CGameConfigReader__FileType * (__thiscall*)(CGameConfigReader*, CGameConfigReader * a2))(cGameConfigReader__FileType_getPrevFile))(this, a2);
     }
     CGameConfigReader__FileType* getFileByType(int a2)
     {
-        return ((CGameConfigReader__FileType*(__thiscall*)(CGameConfigReader*, int a2))(cGameConfigReader__FileType_getFileByType))(this, a2);
+        return ((CGameConfigReader__FileType * (__thiscall*)(CGameConfigReader*, int a2))(cGameConfigReader__FileType_getFileByType))(this, a2);
     }
     //CGameConfigReader__FileType* sub_4774A0();
 };
@@ -227,6 +250,35 @@ template <typename T> struct pgDictionary : pgBase
     DWORD Lookup(pgDictionary*, DWORD a2)
     {
         return ((DWORD(__thiscall*)(pgDictionary*, DWORD a2))(t_gpDict_Lookup))(this, a2);
+    }
+};
+
+struct fiFile
+{
+    int m_pDevice;
+    int m_hFile;
+    int m_pBuf;
+    int m_dwFilePosition;
+    int m_nBufferPos;
+    int m_nBufferTop;
+    int m_dwBufferSize;
+};
+
+struct fiDevice
+{
+    void* __vmt;
+
+    static fiDevice* __cdecl getDevice(char* pszPath, char a2)
+    {
+        return ((fiDevice * (__cdecl*)(char* pszPath, char a2))(fiDevice_getDevice))(pszPath, a2);
+    }
+};
+
+struct CPlayer
+{
+    char isSignedLocally()
+    {
+        return ((char(__thiscall*)(CPlayer*))(cPlayer_isSignedLocally))(this);
     }
 };
 
@@ -287,7 +339,7 @@ struct CTxdStore
     }
     static DWORD* popCurrentTxd()
     {
-        return ((DWORD*(*)())(cTxdStore_popCurrentTxd))();
+        return ((DWORD * (*)())(cTxdStore_popCurrentTxd))();
     }
     static pgDictionary<grcTexture>** ms_Current;
     static unsigned int __cdecl atStringHash(const char* a1, unsigned int a2)
@@ -306,7 +358,7 @@ struct CAutoLock
     int m_pCriticalSection;
     CAutoLock(LPCRITICAL_SECTION lpCriticalSection)
     {
-        ((CAutoLock*(__thiscall*)(CAutoLock*, LPCRITICAL_SECTION lpCriticalSection))(cAutoLock_constructor))(this, lpCriticalSection);
+        ((CAutoLock * (__thiscall*)(CAutoLock*, LPCRITICAL_SECTION lpCriticalSection))(cAutoLock_constructor))(this, lpCriticalSection);
     }
     ~CAutoLock()
     {
@@ -314,9 +366,9 @@ struct CAutoLock
     }
 };
 
-struct CRenderer 
+struct CRenderer
 {
-    int removeAllTexturesFromDictionary(int a2) 
+    int removeAllTexturesFromDictionary(int a2)
     {
         return ((int(__thiscall*)(CRenderer*, int a2))(cRenderer_removeAllTexturesFromDictionary))(this, a2);
     }
@@ -357,7 +409,28 @@ extern void* off_109B2CC;
 extern int* pDword_10986E8;
 extern int* pDword_1098940;
 extern char* pByte_1098700;
-extern int* __dwCurrentLanguage;
+extern int* dwCurrentLanguage;
+extern int* dwGameLanguage;
+extern int* filterSaveSettings;
+extern char* pByte_104D7C8;
+extern char* pByte_F07ED4;
+extern __int64* pQword_104DE2C;
+extern char* pByte_F07EA4;
+extern int* grcTexturePC__ms_dwTextureQuality;
+extern int* pDword_104DDE0;
+extern int* pDword_104DDE4;
+extern int* pDword_104DDE8;
+extern int* pDword_104DDEC;
+extern int* pDword_104DDF0;
+extern int* pDword_104DDF4;
+extern int* pDword_104DDF8;
+extern int* pDword_104DDFC;
+extern int* pDword_104DE00;
+extern int* pDword_104DE04;
+extern int* pDword_104DB98;
+extern const char* pszPath;
+extern char* pByte_104DE83;
+
 
 extern size_t sub_7C5D70_lea;
 extern size_t sub_7C5D70_mov;
@@ -369,7 +442,10 @@ extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;
 
+
+GameVersion getGameVersion();
 void initAddrsDynamic();
 int GetLanguageFromSystemLanguage();
+char _loadSettings();
 void breakLimits();
 void _loadFontTextures();

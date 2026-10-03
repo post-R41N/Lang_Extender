@@ -58,11 +58,10 @@ void _loadFontTextures()
         {
             File = CTxdStore::loadFile(v1, (const char*)PrevFile);
             PrevFile = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)PrevFile);
-        } 
-        while (PrevFile->nNext != -1);
+        } while (PrevFile->nNext != -1);
         if (!File)
         {
-            LABEL_13:
+        LABEL_13:
             CTxdStore::loadFile(v1, "platform:/textures/fonts_r");
         }
     }
@@ -74,11 +73,10 @@ void _loadFontTextures()
         {
             v7 = CTxdStore::loadFile(v1, (const char*)FileByType);
             FileByType = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)FileByType);
-        } 
-        while (FileByType->nNext != -1);
+        } while (FileByType->nNext != -1);
         if (!v7)
         {
-            LABEL_17:
+        LABEL_17:
             CTxdStore::loadFile(v1, "platform:/textures/fonts_j");
         }
     }
@@ -90,11 +88,10 @@ void _loadFontTextures()
         {
             v3 = CTxdStore::loadFile(v1, (const char*)v2);
             v2 = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)v2);
-        } 
-        while (v2->nNext != -1);
+        } while (v2->nNext != -1);
         if (!v3)
         {
-            LABEL_9:
+        LABEL_9:
             CTxdStore::loadFile(v1, "platform:/textures/fonts");
         }
     }
@@ -138,13 +135,13 @@ void _loadFontTextures()
         v19.nNext = *(unsigned __int16*)(g_pGameConfigReader + 4);
         v19.nType = 43;
         v15 = (int)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)&v19);
-        if (((CGameConfigReader__FileType*)v15)->nNext == -1)
-            goto LABEL_29;
+        if (((CGameConfigReader__FileType*)v15)->nNext == -1) goto LABEL_29;
         do
         {
             v16 = CTxdStore::loadFile(*pDword_F0EC4C, (const char*)v15);
             v15 = (int)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)v15);
         } while (((CGameConfigReader__FileType*)v15)->nNext != -1);
+
         if (!v16)
             LABEL_29:
         if (g_text->m_cTextType == 114) CTxdStore::loadFile(*pDword_F0EC4C, "platform:/textures/fonts_r_streamed_1");
