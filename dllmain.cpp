@@ -105,6 +105,9 @@ void print_addrs()
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2));
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3));
 
+    printf_s("cRadar_writeBlipSaveData_jp_condition: 0x%zX\n", IDA_ADDR(cRadar_writeBlipSaveData_jp_condition));
+    printf_s("cRadar_readBlipSaveData_jp_condition: 0x%zX\n", IDA_ADDR(cRadar_readBlipSaveData_jp_condition));
+
     //printf_s("cVehicleModelInfo_initVehData_nulltex: 0x%zX\n", IDA_ADDR(cVehicleModelInfo_initVehData_nulltex));
 
     printf_s("\nFunctions============================================\n");
@@ -158,12 +161,23 @@ void print_addrs()
 
 void init()
 {
+    char szExe[MAX_PATH];
+    GetModuleFileNameA(nullptr, szExe, MAX_PATH);
+    const char* name = strrchr(szExe, '\\') ? strrchr(szExe, '\\') + 1 : szExe;
+    if (_stricmp(name, "GTAIV.exe") != 0 && _stricmp(name, "EFLC.exe") != 0) return;   // лаунчер, RGSC, WER Ч все идут мимо
+
     g_baseAddress = (size_t)GetModuleHandleA(nullptr);
     dwGameSignature = *(size_t*)FIX_ADDR_OFFSET(0x00401067, 2);
-    enableConsole();
-    system("pause");
+    if (getGameVersion() == GameVersion::Unknown) return;
+
+
+    //g_baseAddress = (size_t)GetModuleHandleA(nullptr);
+    //dwGameSignature = *(size_t*)FIX_ADDR_OFFSET(0x00401067, 2);
+    //enableConsole();
+    //system("pause");
 
     getGameVersion();
+    enableConsole();
     initAddrsDynamic();
     //patchInitVehData_SignLiveries_FFAware();
 

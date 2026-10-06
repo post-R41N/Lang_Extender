@@ -50,7 +50,8 @@ void _loadFontTextures()
     v1 = CTxdStore::addEntry("fonts");
     if (g_text->m_cTextType == 114)
     {
-        v19.nNext = *(unsigned __int16*)(g_pGameConfigReader + 4);
+        //v19.nNext = *(unsigned __int16*)(g_pGameConfigReader + 4);
+        v19.nNext = (*g_pGameConfigReader)->m_files.wCount;
         v19.nType = ConfigFontTxdR;
         PrevFile = (CGameConfigReader__FileType*)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)&v19);
         if (PrevFile->nNext == -1) goto LABEL_13;
@@ -132,7 +133,8 @@ void _loadFontTextures()
         }
         CTxdStore::releaseEntry(v14);
         *pDword_F0EC4C = CTxdStore::addEntry("streamedfont");
-        v19.nNext = *(unsigned __int16*)(g_pGameConfigReader + 4);
+        //v19.nNext = *(unsigned __int16*)(g_pGameConfigReader + 4);
+        v19.nNext = (*g_pGameConfigReader)->m_files.wCount;
         v19.nType = 43;
         v15 = (int)(*g_pGameConfigReader)->getPrevFile((CGameConfigReader*)&v19);
         if (((CGameConfigReader__FileType*)v15)->nNext == -1) goto LABEL_29;

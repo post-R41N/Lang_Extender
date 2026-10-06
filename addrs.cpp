@@ -67,6 +67,9 @@ size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1;
 size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
 size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;
 
+size_t cRadar_writeBlipSaveData_jp_condition;
+size_t cRadar_readBlipSaveData_jp_condition;
+
 size_t cVehicleModelInfo_initVehData_nulltex;
 
 
@@ -156,7 +159,7 @@ void initAddrsDynamic()
     pStru_10A1320 = *(_RTL_CRITICAL_SECTION**)findPattern("68 ? ? ? ? 8D 4C 24 3C E8 ? ? ? ? 39 5D 0C 0F 84 ? ? ? ? 8B 0D ? ? ? ? E8 ? ? ? ? 8B F0 ", 1);
     g_pRenderer = *(CRenderer**)findPattern("B9 ? ? ? ? E8 ? ? ? ? 68 ? ? ? ? B9 ? ? ? ? E8 ? ? ? ? 85 C0 74 0B 8B 10 8B C8 8B 42 08 6A 01 FF D0 ", 1);
     pByte_109A158 = *(char**)findPattern("8D B8 ? ? ? ? 8B 04 B5 ? ? ? ? 3B C7 0F 84 ? ? ? ? 80 3D ? ? ? ? ? 0F 85 ? ? ? ? 8B 0D ? ? ? ? ", 2);
-    pByte_109A958 = *(char**)findPattern("C6 05 ? ? ? ? ? C7 05 ? ? ? ? ? ? ? ? EB B6 ", 12);
+    pByte_109A958 = *(char**)findPattern("C7 05 ? ? ? ? ? ? ? ? EB B6 ", 6);
     pDword_109B21C = *(int**)findPattern("89 34 85 ? ? ? ? A1 ? ? ? ? 8B 14 81 8B 82 ? ? ? ? D1 E8 A8 01 5E ", 3);
     pDword_109B220 = *(int**)findPattern("C7 05 ? ? ? ? ? ? ? ? 75 0A B9 ? ? ? ? E8 ? ? ? ? 68 ? ? ? ? E8 ? ? ? ? 83 CD FF 55 8B F0 89 3D ? ? ? ? ", 2);
     off_109B2CC = *(void**)findPattern("B9 ? ? ? ? E8 ? ? ? ? 68 ? ? ? ? E8 ? ? ? ? 83 CD FF 55 8B F0 ", 1);
@@ -212,6 +215,9 @@ void initAddrsDynamic()
     cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1 = findPattern("89 2D ? ? ? ? EB 16 3B C5 EB 0A ", 0);
     cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2 = findPattern("89 1D ? ? ? ? 55 E8 ? ? ? ? 83 C4 04 80 3D ? ? ? ? ? 74 0F 55 89 3D ? ? ? ? E8 ? ? ? ? 83 C4 04 ", 0);
     cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3 = findPattern("89 3D ? ? ? ? E8 ? ? ? ? 83 C4 04 8B 15 ? ? ? ? 3B 15 ? ? ? ? 0F 84 ? ? ? ? 80 3D ? ? ? ? ? 0F 84 ? ? ? ? 55 B9 ? ? ? ? ", 0);
+
+    cRadar_writeBlipSaveData_jp_condition = findPattern("74 37 80 3D ? ? ? ? ? 75 2E 8D 8C 24 ? ? ? ? 51 8D 56 60 52 66 C7 86 ? ? ? ? ? ? ", 0);// old 83 C4 30 80 3D ? ? ? ? 6A 74 37 80 3D ? ? ? ? 00 75 2E 8D 8C 24 BC
+    cRadar_readBlipSaveData_jp_condition = findPattern("74 37 80 3D ? ? ? ? ? 75 2E 8D 84 24 ? ? ? ? 6A 1E 50 E8 ? ? ? ? ", 0);//old 83 C4 30 80 3D ? ? ? ? 6A 74 37 80 3D ? ? ? ? 00 75 2E 8D 84 24 BC|
 
     //Functions=================
     cText_isJapaneseLang = findPattern("E8 ? ? ? ? 84 C0 75 04 6A 07 ", 0);
@@ -288,6 +294,7 @@ void initAddrsDynamic()
     fiDevice_getDevice = findPattern("83 EC 08 53 8B 5C 24 10 6A 07 68 ? ? ? ? ", 0);
 
     cPlayer_isSignedLocally = findPattern("E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 8B 94 24 ? ? ? ? 8B 84 24 ? ? ? ? 8B 8C 24 ? ? ? ? ", 0);
+    cPlayer_isSignedLocally = getFnAddrInCallOpcode(cPlayer_isSignedLocally);
 
     f_sub_7CAC70 = findPattern("E8 ? ? ? ? 68 ? ? ? ? 68 ? ? ? ? E8 ? ? ? ? 68 ? ? ? ? 8B F8 E8 ? ? ? ? 83 C4 14 ", 0);
     f_sub_7CAC70 = getFnAddrInCallOpcode(f_sub_7CAC70);

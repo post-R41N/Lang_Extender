@@ -442,6 +442,9 @@ extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;
 
+extern size_t cRadar_writeBlipSaveData_jp_condition;
+extern size_t cRadar_readBlipSaveData_jp_condition;
+
 
 GameVersion getGameVersion();
 void initAddrsDynamic();

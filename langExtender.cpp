@@ -123,10 +123,13 @@ char _loadSettings()
     int v4; // [esp+8h] [ebp-49Ch] BYREF
     char v5[660]; // [esp+Ch] [ebp-498h] BYREF
     char pszPath[512]; // [esp+2A0h] [ebp-204h] BYREF
+    const char* settingsName = "SETTINGS.CFG";
 
     v4 = 0;
     sub_7CAC70("Settings", 1);
-    v0 = (fiFile*)gta_fopen("SETTINGS_EFLC.CFG", "r");
+    //if (dwGameVersion == GameVersion::GTAIV_1070 || dwGameVersion == GameVersion::GTAIV_1080) settingsName = "SETTINGS.CFG";
+    if (dwGameVersion == GameVersion::EFLC_1120 || dwGameVersion == GameVersion::EFLC_1130) settingsName = "SETTINGS_EFLC.CFG";
+    v0 = (fiFile*)gta_fopen(settingsName, "r");
     if (!v0) return 0;
     gta_fread(v0, (char*)&v4, 4);
     if (v4 == 271062290)
@@ -165,7 +168,8 @@ char _loadSettings()
         gta_fclose(v0);
         sprintf_s(pszPath, "%s", &::pszPath);
         Device = fiDevice::getDevice(pszPath, 1);
-        sprintf_s(v5, "%s\\Settings_eflc.cfg", pszPath);
+        if (dwGameVersion == GameVersion::GTAIV_1070 || dwGameVersion == GameVersion::GTAIV_1080) sprintf_s(v5, "%s\\Settings.cfg", pszPath);
+        else if (dwGameVersion == GameVersion::EFLC_1120 || dwGameVersion == GameVersion::EFLC_1130) sprintf_s(v5, "%s\\Settings_eflc.cfg", pszPath);
         (*((void(__thiscall**)(fiDevice*, char*))Device->__vmt + 14))(Device, v5);
     }
     *pByte_104DE83 = 1;
@@ -187,4 +191,9 @@ void breakLimits()
     if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1, 6);//NOPing the mov __dwCurrentLanguage, ebp(0)
     if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2, 6);//NOPing the mov __dwCurrentLanguage, ebx(4)
     if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3, 6);//NOPing the mov __dwCurrentLanguage, edi(6)
+
+    //Breaking conditions for Japanese lang in CRadar_writeBlipSaveData
+    if (cRadar_writeBlipSaveData_jp_condition != 0) makeNop(cRadar_writeBlipSaveData_jp_condition, 11);//NOPing the jz+cmp g_text.m_bJapanese, 0
+    //Breaking conditions for Japanese lang in CRadar_readBlipSaveData
+    if (cRadar_readBlipSaveData_jp_condition != 0) makeNop(cRadar_readBlipSaveData_jp_condition, 11);//NOPing the jz+cmp g_text.m_bJapanese, 0
 }
