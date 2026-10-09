@@ -434,10 +434,15 @@ extern char* pByte_104DE83;
 
 extern size_t sub_7C5D70_lea;
 extern size_t sub_7C5D70_mov;
+
 extern size_t _loadSettings_dwCurrentLanguage_1;
 extern size_t _loadSettings_dwCurrentLanguage_2;
+
 extern size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1;
 extern size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2;
+
+extern size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv;
+
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
 extern size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;

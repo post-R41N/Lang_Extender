@@ -64,6 +64,7 @@ int CFrontEnd::GetLanguageFromSystemLanguage()
         langID = 6;
         break;
     default:
+        langID = 0;
         break;
     }
     return langID;
@@ -186,6 +187,8 @@ void breakLimits()
     //Breaking resets of dwCurrentLanguage/dwGameLanguage in CFrontEnd::UpdateMenuOptionsFromProfile function
     if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1, 10);//NOPing the __dwCurrentLanugage = 0
     if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2 != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2, 15);//NOPing operation for giving language value = 6
+
+    if (cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv != 0) makeNop(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv, 5);//Noping the _dwCurrentLanguage = CProfileSettings__GetIntSetting(206) for IV-code
 
     //Breaking resets of dwCurrentLanguage in CFrontEnd::SetValuesBasedOnPreference function
     if (cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1 != 0) makeNop(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1, 6);//NOPing the mov __dwCurrentLanguage, ebp(0)

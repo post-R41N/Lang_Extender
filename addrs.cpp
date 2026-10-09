@@ -59,10 +59,15 @@ char* pByte_104DE83;
 
 size_t sub_7C5D70_lea;
 size_t sub_7C5D70_mov;
+
 size_t _loadSettings_dwCurrentLanguage_1;
 size_t _loadSettings_dwCurrentLanguage_2;
+
 size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1;
 size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2;
+
+size_t cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv;
+
 size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1;
 size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2;
 size_t cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3;
@@ -212,12 +217,15 @@ void initAddrsDynamic()
 
     cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1 = findPattern("C7 05 ? ? ? ? ? ? ? ? 80 3D ? ? ? ? ? 74 0F B8 ? ? ? ? A3 ? ? ? ? A3 ? ? ? ? ", 0);
     cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2 = findPattern("B8 ? ? ? ? A3 ? ? ? ? A3 ? ? ? ? 68 ? ? ? ? 8B CE E8 ? ? ? ? 84 C0 74 11 68 ? ? ? ? 8B CE E8 ? ? ? ? A3 ? ? ? ? ", 0);
+
+    cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv = findPattern("A3 ? ? ? ? 74 0F B8 ? ? ? ? A3 ? ? ? ? A3 ? ? ? ? ", 0);
+
     cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1 = findPattern("89 2D ? ? ? ? EB 16 3B C5 EB 0A ", 0);
     cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2 = findPattern("89 1D ? ? ? ? 55 E8 ? ? ? ? 83 C4 04 80 3D ? ? ? ? ? 74 0F 55 89 3D ? ? ? ? E8 ? ? ? ? 83 C4 04 ", 0);
     cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3 = findPattern("89 3D ? ? ? ? E8 ? ? ? ? 83 C4 04 8B 15 ? ? ? ? 3B 15 ? ? ? ? 0F 84 ? ? ? ? 80 3D ? ? ? ? ? 0F 84 ? ? ? ? 55 B9 ? ? ? ? ", 0);
 
-    cRadar_writeBlipSaveData_jp_condition = findPattern("74 37 80 3D ? ? ? ? ? 75 2E 8D 8C 24 ? ? ? ? 51 8D 56 60 52 66 C7 86 ? ? ? ? ? ? ", 0);// old 83 C4 30 80 3D ? ? ? ? 6A 74 37 80 3D ? ? ? ? 00 75 2E 8D 8C 24 BC
-    cRadar_readBlipSaveData_jp_condition = findPattern("74 37 80 3D ? ? ? ? ? 75 2E 8D 84 24 ? ? ? ? 6A 1E 50 E8 ? ? ? ? ", 0);//old 83 C4 30 80 3D ? ? ? ? 6A 74 37 80 3D ? ? ? ? 00 75 2E 8D 84 24 BC|
+    cRadar_writeBlipSaveData_jp_condition = findPattern("74 37 80 3D ? ? ? ? ? 75 2E 8D 8C 24 ? ? ? ? 51 8D 56 60 52 66 C7 86 ? ? ? ? ? ? ", 0);
+    cRadar_readBlipSaveData_jp_condition = findPattern("74 37 80 3D ? ? ? ? ? 75 2E 8D 84 24 ? ? ? ? 6A 1E 50 E8 ? ? ? ? ", 0);
 
     //Functions=================
     cText_isJapaneseLang = findPattern("E8 ? ? ? ? 84 C0 75 04 6A 07 ", 0);

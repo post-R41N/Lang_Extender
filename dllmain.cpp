@@ -18,7 +18,6 @@ void print_addrs()
     printf_s("g_baseAddress: %u\n", g_baseAddress);
     printf_s("dwGameSignature Addr: %p\n", IDA_ADDR(dwGameSignature));
 
-    //printf_s("Patch: %c\n", (const char)dwGameVersionName);
     printf_s("Patch: ");
     switch (dwGameVersion)
     {
@@ -101,6 +100,8 @@ void print_addrs()
     printf_s("cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1: 0x%zX\n", IDA_ADDR(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1));
     printf_s("cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2: 0x%zX\n", IDA_ADDR(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_2));
 
+    printf_s("cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv: 0x%zX\n", IDA_ADDR(cFrontEnd_UpdateMenuOptionsFromProfile_dwCurrentLanguage_1_iv));
+
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_1));
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_2));
     printf_s("cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3: 0x%zX\n", IDA_ADDR(cFrontEnd_SetValuesBasedOnPreference_dwCurrentLanguage_3));
@@ -161,26 +162,12 @@ void print_addrs()
 
 void init()
 {
-    char szExe[MAX_PATH];
-    GetModuleFileNameA(nullptr, szExe, MAX_PATH);
-    const char* name = strrchr(szExe, '\\') ? strrchr(szExe, '\\') + 1 : szExe;
-    if (_stricmp(name, "GTAIV.exe") != 0 && _stricmp(name, "EFLC.exe") != 0) return;   // лаунчер, RGSC, WER Ч все идут мимо
-
     g_baseAddress = (size_t)GetModuleHandleA(nullptr);
     dwGameSignature = *(size_t*)FIX_ADDR_OFFSET(0x00401067, 2);
-    if (getGameVersion() == GameVersion::Unknown) return;
-
-
-    //g_baseAddress = (size_t)GetModuleHandleA(nullptr);
-    //dwGameSignature = *(size_t*)FIX_ADDR_OFFSET(0x00401067, 2);
-    //enableConsole();
-    //system("pause");
-
     getGameVersion();
+
     enableConsole();
     initAddrsDynamic();
-    //patchInitVehData_SignLiveries_FFAware();
-
     print_addrs();
     system("pause");
 
@@ -190,6 +177,7 @@ void init()
     injectFunc(cFrontEnd_GetLanguageFromSystemLanguage, (size_t)(CFrontEnd::GetLanguageFromSystemLanguage));
     setFnAddrInCallOpcode(cText_GetLanguageFile, getThisCallAddr(&CText::GetLanguageFile));
     injectFunc(f_loadFontTextures, (size_t)(_loadFontTextures));
+
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,
